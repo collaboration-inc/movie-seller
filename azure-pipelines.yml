@@ -27,6 +27,7 @@ steps:
     command: test
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+    publishTestResults: true
   displayName: 'dotnet test $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
