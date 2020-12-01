@@ -9,7 +9,8 @@ namespace MovieSellerDb
             Console.WriteLine("Hello World!");
             var connectionString =
     args.FirstOrDefault()
-    ?? "Server=(local)\\SqlExpress; Database=MyApp; Trusted_connection=true";
+    ?? "Server=localhost\MSSQLSERVER01;Database=movieSeller;Trusted_Connection=True;";
+            EnsureDatabase.For.SqlDatabase(connectionString);
 
             var upgrader =
                 DeployChanges.To
