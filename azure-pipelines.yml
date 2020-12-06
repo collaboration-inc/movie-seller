@@ -52,3 +52,27 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
+
+- stage: 'Deploy'
+  displayName: 'Deployment stage'
+  dependsOn: Build
+  jobs:
+  - deployment: Deploy
+    pool:
+      vmImage: 'ubuntu-18.04'
+    environment: dev
+    variables:
+    - group: Release
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          - task: AzureWebApp@1
+            displayName: 'Azure App Service Deploy: $(WebAppName)'
+            inputs:
+              azureSubscription: 'Resource Manager - Collaboration'
+              appName: '$(WebAppName)'
+              appType: webAppLinux
+              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
