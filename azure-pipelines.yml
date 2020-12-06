@@ -45,7 +45,7 @@ stages:
       displayName: 'dotnet publish $(buildConfiguration)'
       inputs:
         command: publish
-        projects: '**/*.csproj'
+        projects: 'src/MovieSeller/MovieSeller.csproj'
         publishWebProjects: false
         arguments: '--no-build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
         zipAfterPublish: true
