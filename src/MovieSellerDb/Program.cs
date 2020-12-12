@@ -1,16 +1,28 @@
-﻿using System;
+﻿using DbUp;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Linq;
+using System.Reflection;
 
 namespace MovieSellerDb
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            var connectionString =
-    args.FirstOrDefault()
-    ?? "Server=localhost\MSSQLSERVER01;Database=movieSeller;Trusted_Connection=True;";
-            EnsureDatabase.For.SqlDatabase(connectionString);
+            IConfiguration Configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddEnvironmentVariables()
+            .AddCommandLine(args)
+            .Build();
+
+    //        Console.WriteLine("Hello World!");
+    //        var connectionString =
+    //args.FirstOrDefault()
+    //?? @"Server=localhost\MSSQLSERVER01;Database=movieSeller;Trusted_Connection=True;";
+    //        EnsureDatabase.For.SqlDatabase(connectionString);
+
+            var connectionString = Configuration.GetConnectionString("DevDatabase");
 
             var upgrader =
                 DeployChanges.To
@@ -26,9 +38,9 @@ namespace MovieSellerDb
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(result.Error);
                 Console.ResetColor();
-#if DEBUG
+           #if DEBUG
                 Console.ReadLine();
-#endif
+           #endif
                 return -1;
             }
 
