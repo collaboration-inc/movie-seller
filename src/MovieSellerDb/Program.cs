@@ -16,37 +16,42 @@ namespace MovieSellerDb
             .AddCommandLine(args)
             .Build();
 
-    //        Console.WriteLine("Hello World!");
-    //        var connectionString =
-    //args.FirstOrDefault()
-    //?? @"Server=localhost\MSSQLSERVER01;Database=movieSeller;Trusted_Connection=True;";
-    //        EnsureDatabase.For.SqlDatabase(connectionString);
+            InitDatabase(Configuration);
 
-            var connectionString = Configuration.GetConnectionString("DevDatabase");
+            return 0;
+        }
 
+        private static int InitDatabase(IConfiguration configuration)
+        {
+            var connectionString = configuration.GetConnectionString("DevDatabase");
+            EnsureDatabase.For.SqlDatabase(connectionString);
             var upgrader =
                 DeployChanges.To
                     .SqlDatabase(connectionString)
                     .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+                    .WithTransaction()
                     .LogToConsole()
                     .Build();
 
-            var result = upgrader.PerformUpgrade();
-
-            if (!result.Successful)
+            if (upgrader.IsUpgradeRequired())
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(result.Error);
-                Console.ResetColor();
-           #if DEBUG
-                Console.ReadLine();
-           #endif
-                return -1;
-            }
+                var result = upgrader.PerformUpgrade();
+                if (!result.Successful)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(result.Error);
+                    Console.ResetColor();
+                    #if DEBUG
+                    Console.ReadLine();
+                    #endif
+                    return -1;
+                }
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Success!");
-            Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Success!");
+                Console.ResetColor();
+
+            }
             return 0;
         }
     }
