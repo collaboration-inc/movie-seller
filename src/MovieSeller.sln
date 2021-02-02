@@ -1,9 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieSeller", "MovieSeller\MovieSeller.csproj", "{EA213EAE-280D-40CD-BF2D-F0123DA1C94C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieSeller", "MovieSeller\MovieSeller.csproj", "{EA213EAE-280D-40CD-BF2D-F0123DA1C94C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieSellerDb", "MovieSellerDb\MovieSellerDb.csproj", "{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieSeller.Tests", "MovieSeller.Tests\MovieSeller.Tests.csproj", "{D07DA6C0-1447-48DD-BBAF-D0D0469FF410}"
 EndProject
@@ -17,6 +19,10 @@ Global
 		{EA213EAE-280D-40CD-BF2D-F0123DA1C94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA213EAE-280D-40CD-BF2D-F0123DA1C94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA213EAE-280D-40CD-BF2D-F0123DA1C94C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D07DA6C0-1447-48DD-BBAF-D0D0469FF410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D07DA6C0-1447-48DD-BBAF-D0D0469FF410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D07DA6C0-1447-48DD-BBAF-D0D0469FF410}.Release|Any CPU.ActiveCfg = Release|Any CPU
