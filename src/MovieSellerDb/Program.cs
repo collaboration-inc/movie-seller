@@ -10,8 +10,10 @@ namespace MovieSellerDb
     {
         static int Main(string[] args)
         {
+            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             IConfiguration Configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddJsonFile($"appsetting.{env}.json", optional:true, reloadOnChange:true)
             .AddEnvironmentVariables()
             .AddCommandLine(args)
             .Build();
