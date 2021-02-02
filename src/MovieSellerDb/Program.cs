@@ -12,10 +12,10 @@ namespace MovieSellerDb
         static int Main(string[] args)
         {
             IConfiguration Configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddEnvironmentVariables()
-            .AddCommandLine(args)
-            .Build();
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables()
+                .AddCommandLine(args)
+                .Build();
 
             InitDatabase(Configuration);
 
