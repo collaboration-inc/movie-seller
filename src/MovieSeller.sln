@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
@@ -19,17 +19,14 @@ Global
 		{EA213EAE-280D-40CD-BF2D-F0123DA1C94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA213EAE-280D-40CD-BF2D-F0123DA1C94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA213EAE-280D-40CD-BF2D-F0123DA1C94C}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
 		{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC9DAE9A-5CAD-4A36-B589-824CE82F3718}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{D07DA6C0-1447-48DD-BBAF-D0D0469FF410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D07DA6C0-1447-48DD-BBAF-D0D0469FF410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D07DA6C0-1447-48DD-BBAF-D0D0469FF410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D07DA6C0-1447-48DD-BBAF-D0D0469FF410}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> ec56a8350b58826ddd9efd96300012508f20b7c2
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
