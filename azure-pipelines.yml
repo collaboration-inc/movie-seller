@@ -91,4 +91,4 @@ stages:
               azureSubscription: 'Resource Manager - Collaboration'
               appName: '$(WebAppName)'
               appType: webAppLinux
-              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+              package: '$(Pipeline.Workspace)/MovieSellerWeb/$(buildConfiguration)/*.zip'
