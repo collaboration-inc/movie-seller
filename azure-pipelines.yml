@@ -42,6 +42,20 @@ stages:
         publishTestResults: true
 
     - task: DotNetCoreCLI@2
+      displayName: 'dotnet build MovieSellerDb $(buildConfiguration)'
+      inputs:
+        command: 'build'
+        projects: 'src/MovieSellerDb/MovieSellerDb.csproj'
+        arguments: '--output $(Build.BinariesDirectory)/$(buildConfiguration) --configuration $(buildConfiguration)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'dotnet publish MovieSellerDb $(buildConfiguration)'
+      inputs:
+        PathtoPublish: '$(Build.BinariesDirectory)/$(buildConfiguration)'
+        ArtifactName: 'MovieSellerDatabase'
+        publishLocation: 'Container'
+
+    - task: DotNetCoreCLI@2
       displayName: 'dotnet publish $(buildConfiguration)'
       inputs:
         command: publish
@@ -51,7 +65,9 @@ stages:
         zipAfterPublish: true
 
     - publish: '$(Build.ArtifactStagingDirectory)'
-      artifact: drop
+      artifact: MovieSellerWeb
+
+
 
 - stage: 'Deploy'
   displayName: 'Deployment stage'
@@ -68,11 +84,11 @@ stages:
         deploy:
           steps:
           - download: current
-            artifact: drop
+            artifact: MovieSellerWeb
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: $(WebAppName)'
             inputs:
               azureSubscription: 'Resource Manager - Collaboration'
               appName: '$(WebAppName)'
               appType: webAppLinux
-              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+              package: '$(Pipeline.Workspace)/MovieSellerWeb/$(buildConfiguration)/*.zip'
