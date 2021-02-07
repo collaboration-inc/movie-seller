@@ -48,6 +48,12 @@ stages:
         projects: 'src/MovieSellerDb/MovieSellerDb.csproj'
         arguments: '--output $(Build.BinariesDirectory)/$(buildConfiguration) --configuration $(buildConfiguration)'
 
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.BinariesDirectory)/$(buildConfiguration)'
+        ArtifactName: 'MovieSellerDatabase'
+        publishLocation: 'Container'
+
     - task: DotNetCoreCLI@2
       displayName: 'dotnet publish $(buildConfiguration)'
       inputs:
