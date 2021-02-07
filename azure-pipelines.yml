@@ -84,7 +84,7 @@ stages:
         deploy:
           steps:
           - download: current
-            artifact: drop
+            artifact: MovieSellerWeb
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: $(WebAppName)'
             inputs:
