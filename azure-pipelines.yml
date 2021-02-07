@@ -49,6 +49,7 @@ stages:
         arguments: '--output $(Build.BinariesDirectory)/$(buildConfiguration) --configuration $(buildConfiguration)'
 
     - task: PublishBuildArtifacts@1
+      displayName: 'dotnet publish MovieSellerDb $(buildConfiguration)'
       inputs:
         PathtoPublish: '$(Build.BinariesDirectory)/$(buildConfiguration)'
         ArtifactName: 'MovieSellerDatabase'
