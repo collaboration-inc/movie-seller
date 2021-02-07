@@ -42,7 +42,7 @@ stages:
         publishTestResults: true
 
     - task: DotNetCoreCLI@2
-      displayName: 'dotnet dbup_build $(buildConfiguration)'
+      displayName: 'dotnet build MovieSellerDb $(buildConfiguration)'
       inputs:
         command: 'build'
         projects: 'src/MovieSellerDb/MovieSellerDb.csproj'
